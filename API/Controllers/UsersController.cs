@@ -10,8 +10,7 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    public class UsersController(ApplicationDbContext context) : ControllerBase
+    public class UsersController(ApplicationDbContext context) : BaseApiController
     {
         [HttpGet]
         public async Task<IActionResult> Get()
