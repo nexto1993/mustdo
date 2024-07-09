@@ -1,1 +1,11 @@
 <h1>App</h1>
+
+
+<ul>
+    @for (user of users; track $index) {
+        <li>
+            {{user.id}}
+        </li>
+    }
+  
+</ul>
