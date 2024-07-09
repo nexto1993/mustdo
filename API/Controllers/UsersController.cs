@@ -1,23 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using API.Entities;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 namespace API.Controllers
 {
     public class UsersController(ApplicationDbContext context) : BaseApiController
     {
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var users = await context.Appusers.ToListAsync();
             return Ok(users);
         }
+
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
