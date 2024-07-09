@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NavComponent } from "./nav/nav.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, NavComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
