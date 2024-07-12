@@ -2,21 +2,35 @@
     <div class="container">
       <a class="navbar-brand" href="#">App</a>
    
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link">Best coworker</a>
-          </li>
-         
-          <li class="nav-item">
-            <a class="nav-link">Lists</a>
-          </li>
-         
-          <li class="nav-item">
-            <a class="nav-link">Messages</a>
-          </li>
-         
-    
-        </ul>
+
+        @if (accountService.currentUser()) {
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link">Best coworker</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link">Lists</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link">Messages</a>
+            </li>           
+          </ul>
+        }
+        @if (accountService.currentUser()) {
+          <div class="dropdown" dropdown>
+            <a class="dropdown-toggle text-dark"dropdownToggle>welcome</a>
+            <div *dropdownMenu class="dropdown-menu">
+              <a class="dropdown-item" href="/profile">Profile</a>
+              <a class="dropdown-item" href="/settings">Settings</a>
+              <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+            </div>
+          </div>
+
+        }
+       
+       @if (!accountService.currentUser()) {
         <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
           <input name="username" [(ngModel)]="model.username" class="form-control me-2" placeholder="Username">
           <input name="password" [(ngModel)]="model.password" class="form-control me-2" placeholder="Passord" type="password">
@@ -24,5 +38,6 @@
           <button class="btn btn-outline-success" type="submit">Login</button>
         </form>
   
+       }
     </div>
   </nav>

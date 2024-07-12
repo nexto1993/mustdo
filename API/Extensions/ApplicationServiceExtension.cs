@@ -12,13 +12,9 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseSqlite(config.GetConnectionString("DefaultConnection"));
-            });
+       
             services.AddControllers();
             services.AddScoped<ITokenService, TokenService>();
-            services.AddCors();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
           

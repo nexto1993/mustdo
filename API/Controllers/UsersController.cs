@@ -6,7 +6,7 @@ namespace API.Controllers
 {
     public class UsersController(ApplicationDbContext context) : BaseApiController
     {
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
