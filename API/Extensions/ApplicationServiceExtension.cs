@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Helper;
 using API.Interfaces;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,7 +33,9 @@ namespace API.Extensions
                     };
                 });
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPhotoService, PhotoService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             return services;
         }
     }
